@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## 📦 Preuzimanje aplikacije
+
+Preuzmi build aplikacije klikom na link ispod:
+
+[⬇️ app-release.zip](./release/app-release.zip)
