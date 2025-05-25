@@ -1,8 +1,8 @@
 // food_details_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../services/product_service.dart';
 import '../widgets/favourite_icon_button.dart';
+import '../../data/models/product.dart';
 
 class FoodDetailsScreen extends StatelessWidget {
   final Product product;

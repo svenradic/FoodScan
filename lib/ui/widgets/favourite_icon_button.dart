@@ -1,7 +1,7 @@
 // favorite_icon_button.dart
 import 'package:flutter/material.dart';
-import 'package:foodscan_app/services/favourites_service.dart';
-import '../services/product_service.dart';
+import 'package:foodscan_app/common/services/favourites_service.dart';
+import '../../data/models/product.dart';
 
 class FavoriteIconButton extends StatefulWidget {
   final Product product;

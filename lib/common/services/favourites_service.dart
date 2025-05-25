@@ -1,7 +1,8 @@
 // favorites_service.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../services/product_service.dart';
+import '../../data/models/product.dart';
+import '../../data/models/nutrition.dart';
 
 class FavoritesService {
   final _auth = FirebaseAuth.instance;

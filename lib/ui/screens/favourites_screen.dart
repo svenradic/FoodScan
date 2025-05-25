@@ -1,10 +1,10 @@
 // favorites_screen.dart
 import 'package:flutter/material.dart';
-import 'package:foodscan_app/widgets/favourite_icon_button.dart';
-import '../services/favourites_service.dart';
-import '../services/product_service.dart';
-import '../screens/food_details_screen.dart';
+import 'package:foodscan_app/ui/widgets/favourite_icon_button.dart';
+import '../../common/services/favourites_service.dart';
+import 'food_details_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../data/models/product.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});

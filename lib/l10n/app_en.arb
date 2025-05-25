@@ -32,6 +32,6 @@
   "unknownProduct": "Unknown product",
   "favorites": "Favorites",
   "noFavorites": "No favorites yet",
-  "loadError": "Failed to load favorites"
-
+  "loadError": "Failed to load favorites",
+  "forgotPassword": "Forgot password?"
 }

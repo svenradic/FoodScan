@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'product_service.dart';
+import '../../data/models/product.dart';
 
 class ScanHistoryService extends ChangeNotifier {
   final List<Product> _history = [];

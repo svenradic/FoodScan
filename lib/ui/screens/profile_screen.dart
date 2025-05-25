@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:foodscan_app/services/scan_history_service.dart';
+import 'package:foodscan_app/common/services/scan_history_service.dart';
 import 'package:provider/provider.dart';
-import '../services/auth_service.dart';
-import '../main.dart';
-import 'login_screen.dart';
+import '../../common/services/auth_service.dart';
+import '../../main.dart';
+import 'login/login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -45,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final user = FirebaseAuth.instance.currentUser;
+    final user = _authService.currentUser;
 
     return Scaffold(
       appBar: AppBar(title: Text(loc.profile)),

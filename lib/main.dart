@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:foodscan_app/services/scan_history_service.dart';
-import 'screens/login_screen.dart';
+import 'package:foodscan_app/ui/screens/welcome_screen.dart';
+import 'package:foodscan_app/common/services/scan_history_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const LoginScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }

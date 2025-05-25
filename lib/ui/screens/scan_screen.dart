@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:foodscan_app/services/scan_history_service.dart';
+import 'package:foodscan_app/common/services/scan_history_service.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../services/product_service.dart';
+import '../../common/services/product_service.dart';
 import 'package:provider/provider.dart';
+import '../../data/models/product.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});

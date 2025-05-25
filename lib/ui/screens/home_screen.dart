@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:foodscan_app/screens/favourites_screen.dart';
-import 'package:foodscan_app/services/scan_history_service.dart';
-import 'package:foodscan_app/widgets/favourite_icon_button.dart';
+import 'package:foodscan_app/ui/screens/favourites_screen.dart';
+import 'package:foodscan_app/common/services/scan_history_service.dart';
+import 'package:foodscan_app/ui/widgets/favourite_icon_button.dart';
 import 'profile_screen.dart';
 import 'scan_screen.dart';
 import 'package:provider/provider.dart';

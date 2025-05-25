@@ -32,6 +32,6 @@
   "unknownProduct": "Nepoznat proizvod",
   "favorites": "Favoriti",
   "noFavorites": "Još nema favorita",
-  "loadError": "Greška pri učitavanju favorita"
-
+  "loadError": "Greška pri učitavanju favorita",
+  "forgotPassword": "Zaboravljena lozinka?"
 }
