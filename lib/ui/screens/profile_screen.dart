@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:foodscan_app/common/services/scan_history_service.dart';
 import 'package:provider/provider.dart';
 import '../../common/services/auth_service.dart';
 import '../../main.dart';
@@ -31,7 +30,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _logout() async {
     await _authService.signOut();
-    Provider.of<ScanHistoryService>(context, listen: false).clear();
     if (mounted) {
       Navigator.of(context).popUntil((route) => route.isFirst);
     }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:foodscan_app/common/services/food_log_service.dart';
 import 'package:foodscan_app/common/services/user_nutrition_service.dart';
+import '../../../data/models/daily_intake.dart';
 
 class DashboardViewModel with ChangeNotifier {
+  final UserNutritionService _userNutritionService = UserNutritionService();
+  final FoodLogService _foodLogService = FoodLogService();
   int calorieGoal = 0;
   int consumedCalories = 0;
 
@@ -16,25 +20,27 @@ class DashboardViewModel with ChangeNotifier {
   bool _loading = false;
   bool get isLoading => _loading;
 
-  /// ✅ Load goals from Firebase using service
   Future<void> loadUserGoals() async {
+    print('[DashboardViewModel] Loading user goals...');
     _setLoading(true);
 
     try {
-      final goals = await UserNutritionService().getUserGoals();
+      final goals = await _userNutritionService.getUserGoals();
+      final DailyIntake intake = await _foodLogService.getOrCreateTodayIntake();
+
+      print('[DashboardViewModel] Goals and intake loaded');
 
       calorieGoal = goals.dailyCalories;
       carbsGoal = goals.carbsGoal;
       proteinGoal = goals.proteinGoal;
       fatGoal = goals.fatGoal;
 
-      // Simulate today's consumption (replace with actual tracking later)
-      consumedCalories = 1350;
-      carbs = 160;
-      protein = 50;
-      fat = 45;
+      consumedCalories = intake.totalKcal ?? 0;
+      carbs = intake.totalCarbs ?? 0;
+      protein = intake.totalProtein ?? 0;
+      fat = intake.totalFat ?? 0;
     } catch (e) {
-      // You can log or show an error here if needed
+      print('[DashboardViewModel] Error: $e');
     } finally {
       _setLoading(false);
     }
@@ -43,8 +49,7 @@ class DashboardViewModel with ChangeNotifier {
   double get calorieProgress =>
       calorieGoal > 0 ? consumedCalories / calorieGoal : 0.0;
 
-  double macroProgress(int value, int goal) =>
-      goal > 0 ? value / goal : 0.0;
+  double macroProgress(int value, int goal) => goal > 0 ? value / goal : 0.0;
 
   void _setLoading(bool value) {
     _loading = value;

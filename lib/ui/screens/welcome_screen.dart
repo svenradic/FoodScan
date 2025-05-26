@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodscan_app/ui/screens/login/login_screen.dart';
 import 'package:foodscan_app/ui/screens/register/register_screen.dart';
-import 'package:foodscan_app/ui/screens/register_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WelcomeScreen extends StatelessWidget {

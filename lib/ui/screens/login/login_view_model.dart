@@ -33,7 +33,7 @@ class LoginViewModel with ChangeNotifier {
     if (result == null) {
       final isCompleted = await UserNutritionService().isSetupCompleted();
       if(context.mounted) {
-         Navigator.pushReplacement(
+         Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder:
@@ -41,7 +41,9 @@ class LoginViewModel with ChangeNotifier {
                   isCompleted
                       ? const DashboardScreen()
                       : const NutritionSetupScreen(),
+                      
         ),
+        (route) => false
       );
       }
      
