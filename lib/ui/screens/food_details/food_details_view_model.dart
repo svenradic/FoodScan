@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/nutrition.dart';
 import '../../../common/services/food_log_service.dart';
-import '../../screens/dashboard/dashboard_screen.dart';
+import '../dashboard_screen.dart';
 
 class FoodDetailsViewModel with ChangeNotifier {
   final String productName;

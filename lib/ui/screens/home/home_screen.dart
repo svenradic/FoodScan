@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:foodscan_app/ui/screens/scan/scan_screen.dart';
 import 'package:provider/provider.dart';
-import 'dashboard_view_model.dart';
+import 'home_view_model.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
-  late DashboardViewModel _viewModel;
+class _HomeScreenState extends State<HomeScreen> {
+  late HomeViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = DashboardViewModel();
+    _viewModel = HomeViewModel();
 
     // Load the data once the widget is initialized
     Future.microtask(() => _viewModel.loadUserGoals());
@@ -27,17 +27,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
       value: _viewModel,
-      child: const _DashboardView(),
+      child: const _HomeView(),
     );
   }
 }
 
-class _DashboardView extends StatelessWidget {
-  const _DashboardView({super.key});
+class _HomeView extends StatelessWidget {
+  const _HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<DashboardViewModel>(context);
+    final vm = Provider.of<HomeViewModel>(context);
 
     return Scaffold(
       appBar: AppBar(

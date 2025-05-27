@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'nutrition_setup_view_model.dart';
-import '../dashboard/dashboard_screen.dart';
+import '../dashboard_screen.dart';
 
 class NutritionSetupScreen extends StatelessWidget {
   const NutritionSetupScreen({super.key});

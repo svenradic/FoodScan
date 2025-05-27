@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodscan_app/ui/screens/dashboard/dashboard_screen.dart';
+import 'package:foodscan_app/ui/screens/dashboard_screen.dart';
 import '../../../common/services/auth_service.dart';
 import '../../../common/services/user_nutrition_service.dart';
 import '../nutrition_setup/nutrition_setup_screen.dart';

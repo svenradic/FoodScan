@@ -3,7 +3,7 @@ import 'package:foodscan_app/common/services/food_log_service.dart';
 import 'package:foodscan_app/common/services/user_nutrition_service.dart';
 import '../../../data/models/daily_intake.dart';
 
-class DashboardViewModel with ChangeNotifier {
+class HomeViewModel with ChangeNotifier {
   final UserNutritionService _userNutritionService = UserNutritionService();
   final FoodLogService _foodLogService = FoodLogService();
   int calorieGoal = 0;

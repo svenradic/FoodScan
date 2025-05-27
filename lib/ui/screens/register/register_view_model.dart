@@ -33,6 +33,7 @@ class RegisterViewModel with ChangeNotifier {
       await _auth.register(
         emailController.text.trim(),
         passwordController.text.trim(),
+        nameController.text.trim(),
       );
 
       if (context.mounted) {

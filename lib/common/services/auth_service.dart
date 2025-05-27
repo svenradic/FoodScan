@@ -18,9 +18,15 @@ class AuthService {
   }
 
   // Registracija
-  Future<String?> register(String email, String password) async {
+  Future<String?> register(String email, String password, String userName) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      await userCredential.user?.updateDisplayName(userName);
+      await userCredential.user?.reload();
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message;

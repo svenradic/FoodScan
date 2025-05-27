@@ -19,6 +19,17 @@ class ScanViewModel with ChangeNotifier {
 
     try {
       final fetchedProduct = await ProductService.fetchProduct(barcode);
+
+      if (fetchedProduct == null) {
+        _setError("Product not found.");
+        return;
+      }
+
+      if (fetchedProduct.nutrition == null) {
+        _setError("Nutrition information is missing for this product.");
+        return;
+      }
+
       if (fetchedProduct != null && fetchedProduct.nutrition != null) {
         isLoading = false;
         notifyListeners();
@@ -28,10 +39,11 @@ class ScanViewModel with ChangeNotifier {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => FoodDetailsScreen(
-                productName: fetchedProduct.name,
-                nutrition: fetchedProduct.nutrition!,
-              ),
+              builder:
+                  (_) => FoodDetailsScreen(
+                    productName: fetchedProduct.name,
+                    nutrition: fetchedProduct.nutrition!,
+                  ),
             ),
           ).then((_) => reset()); // Reset after returning
         }
@@ -58,4 +70,3 @@ class ScanViewModel with ChangeNotifier {
     notifyListeners();
   }
 }
-
