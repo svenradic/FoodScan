@@ -35,7 +35,7 @@ class FoodDetailsViewModel with ChangeNotifier {
   double get kcalProgress => (kcal / 2000).clamp(0.0, 1.0);
   double macroProgress(int value) => (value / 100).clamp(0.0, 1.0);
 
-  Future<void> logFood(BuildContext context) async {
+  Future<void> logFood(BuildContext context, String successMessage, String failureMessage) async {
     try {
       final scaledNutrition = Nutrition(
         energy: kcal.toString(),
@@ -54,7 +54,7 @@ class FoodDetailsViewModel with ChangeNotifier {
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Food logged successfully!")),
+          SnackBar(content: Text(successMessage)),
         );
         Navigator.pushAndRemoveUntil(
           context,
@@ -66,7 +66,7 @@ class FoodDetailsViewModel with ChangeNotifier {
       if (context.mounted) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(const SnackBar(content: Text("Failed to log food.")));
+        ).showSnackBar( SnackBar(content: Text(failureMessage)));
       }
     }
   }

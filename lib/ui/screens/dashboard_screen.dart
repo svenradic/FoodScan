@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home/home_screen.dart';
 import 'profile/profile_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -19,6 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -27,14 +29,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         onTap: (index) {
           setState(() => _currentIndex = index);
         },
-        items: const [
+        items:  [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: loc.home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: loc.profile,
           ),
         ],
       ),

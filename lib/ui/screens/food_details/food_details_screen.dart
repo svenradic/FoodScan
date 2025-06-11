@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../../data/models/nutrition.dart';
 import 'food_details_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class FoodDetailsScreen extends StatelessWidget {
   final String productName;
@@ -33,6 +35,7 @@ class _FoodDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     final vm = Provider.of<FoodDetailsViewModel>(context);
 
     return Scaffold(
@@ -93,8 +96,8 @@ class _FoodDetailsView extends StatelessWidget {
             // Grams input
             TextField(
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: "Grams",
+              decoration:  InputDecoration(
+                labelText: loc.grams,
                 border: OutlineInputBorder(),
               ),
               onChanged: vm.updateGrams,
@@ -103,17 +106,17 @@ class _FoodDetailsView extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Macros
-            _macroRow("Carbs", vm.carbs, vm.macroProgress(vm.carbs)),
-            _macroRow("Protein", vm.protein, vm.macroProgress(vm.protein)),
-            _macroRow("Fat", vm.fat, vm.macroProgress(vm.fat)),
+            _macroRow(loc.carbs, vm.carbs, vm.macroProgress(vm.carbs)),
+            _macroRow(loc.protein, vm.protein, vm.macroProgress(vm.protein)),
+            _macroRow(loc.fats, vm.fat, vm.macroProgress(vm.fat)),
 
             const SizedBox(height: 24),
 
             // Add to Log Button
             ElevatedButton.icon(
-              onPressed: () => vm.logFood(context),
+              onPressed: () => vm.logFood(context, loc.successMessage, loc.errorMessage),
               icon: const Icon(Icons.add),
-              label: const Text("Add to my food intake"),
+              label:  Text(loc.addButton),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
@@ -139,7 +142,7 @@ class _FoodDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text("Scan product"),
+              child:  Text(loc.scanProduct),
             ),
           ],
         ),

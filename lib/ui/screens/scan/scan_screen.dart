@@ -53,7 +53,7 @@ class _ScanView extends StatelessWidget {
                   },
                 ),
                 if (vm.isLoading)
-                  const Align(
+                   Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: EdgeInsets.all(12),
@@ -65,7 +65,7 @@ class _ScanView extends StatelessWidget {
                             horizontal: 16,
                           ),
                           child: Text(
-                            "Scanning...",
+                            loc.scanning,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -81,7 +81,7 @@ class _ScanView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        'Point the camera at a barcode',
+                        loc.pointTheCamera,
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),

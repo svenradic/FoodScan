@@ -4,6 +4,7 @@ import '../../../main.dart';
 import '../login/login_screen.dart';
 import 'profile_view_model.dart';
 import '../welcome_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -40,13 +41,13 @@ class _ProfileViewState extends State<_ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     final vm = Provider.of<ProfileViewModel>(context);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
-        title: const Text('Profile'),
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
@@ -59,8 +60,8 @@ class _ProfileViewState extends State<_ProfileView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // Heading
-                    const Text(
-                      'Account Settings',
+                     Text(
+                      loc.profileSettings,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class _ProfileViewState extends State<_ProfileView> {
 
                     // Email + Display Name
                     Text(
-                      vm.user?.displayName ?? "No name",
+                      vm.user?.displayName ?? loc.noName,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
@@ -80,21 +81,21 @@ class _ProfileViewState extends State<_ProfileView> {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      vm.user?.email ?? "email@example.com",
+                      vm.user?.email ?? loc.noEmail,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
 
                     const SizedBox(height: 32),
 
                     // Input fields
-                    _goalField("Calories", vm.caloriesController),
+                    _goalField(loc.calories, vm.caloriesController),
                     
 
                     const SizedBox(height: 24),
                     ElevatedButton.icon(
                       onPressed: vm.updateGoals,
                       icon: const Icon(Icons.save),
-                      label: const Text("Save Changes"),
+                      label: Text(loc.saveChanges),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent,
                         foregroundColor: Colors.white,
@@ -108,22 +109,22 @@ class _ProfileViewState extends State<_ProfileView> {
                     const SizedBox(height: 32),
 
                     // Language Switch
-                    const Align(
+                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Language",
+                        loc.language,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                     const SizedBox(height: 8),
                     ListTile(
-                      title: const Text("English"),
+                      title:  Text(loc.english),
                       trailing:
                           _language == 'en' ? const Icon(Icons.check) : null,
                       onTap: () => _changeLanguage("en"),
                     ),
                     ListTile(
-                      title: const Text("Croatian"),
+                      title:  Text(loc.croatian),
                       trailing:
                           _language == 'hr' ? const Icon(Icons.check) : null,
                       onTap: () => _changeLanguage("hr"),
@@ -153,7 +154,7 @@ class _ProfileViewState extends State<_ProfileView> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text("Logout"),
+                      child:  Text(loc.logout),
                     ),
                   ],
                 ),

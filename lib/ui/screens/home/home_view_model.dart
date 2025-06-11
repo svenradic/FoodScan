@@ -21,14 +21,11 @@ class HomeViewModel with ChangeNotifier {
   bool get isLoading => _loading;
 
   Future<void> loadUserGoals() async {
-    print('[DashboardViewModel] Loading user goals...');
     _setLoading(true);
 
     try {
       final goals = await _userNutritionService.getUserGoals();
       final DailyIntake intake = await _foodLogService.getOrCreateTodayIntake();
-
-      print('[DashboardViewModel] Goals and intake loaded');
 
       calorieGoal = goals.dailyCalories;
       carbsGoal = goals.carbsGoal;
@@ -40,7 +37,7 @@ class HomeViewModel with ChangeNotifier {
       protein = intake.totalProtein ?? 0;
       fat = intake.totalFat ?? 0;
     } catch (e) {
-      print('[DashboardViewModel] Error: $e');
+      
     } finally {
       _setLoading(false);
     }

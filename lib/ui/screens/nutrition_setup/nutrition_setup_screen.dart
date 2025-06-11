@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'nutrition_setup_view_model.dart';
 import '../dashboard_screen.dart';
 
@@ -21,10 +22,11 @@ class _NutritionSetupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<NutritionSetupViewModel>(context);
+    final loc = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Set Your Goals"),
+        title:  Text(loc.setGoals),
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
@@ -33,8 +35,8 @@ class _NutritionSetupView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              "Enter your desired daily calorie intake:",
+             Text(
+              loc.enterCalories,
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 16),
@@ -60,7 +62,7 @@ class _NutritionSetupView extends StatelessWidget {
                   vm.isLoading
                       ? null
                       : () async {
-                        await vm.saveGoals();
+                        await vm.saveGoals(loc.enterValidNumber, loc.failedToSaveData);
                         if (vm.error == null && context.mounted) {
                           Navigator.pushReplacement(
                             context,
@@ -79,7 +81,7 @@ class _NutritionSetupView extends StatelessWidget {
                       ? const CircularProgressIndicator(
                         color: Colors.blueAccent,
                       )
-                      : const Text("Continue",
+                      :  Text(loc.continueText,
                         style: TextStyle(color: Colors.white, fontSize: 18),
             ),
             ),

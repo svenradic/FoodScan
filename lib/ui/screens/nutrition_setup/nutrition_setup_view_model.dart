@@ -11,7 +11,7 @@ class NutritionSetupViewModel with ChangeNotifier {
   bool get isLoading => _loading;
   String? get error => _error;
 
-  Future<void> saveGoals() async {
+  Future<void> saveGoals(String enterValidNumber, String failedToSaveData) async {
     final calorieInput = int.tryParse(calorieController.text.trim());
 
     if (calorieInput == null || calorieInput <= 0) {

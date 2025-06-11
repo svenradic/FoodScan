@@ -3,6 +3,7 @@ import 'package:foodscan_app/ui/screens/scan/scan_screen.dart';
 import 'package:provider/provider.dart';
 import 'home_view_model.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,13 +38,13 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     final vm = Provider.of<HomeViewModel>(context);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
-        title: const Text('Scan a barcode'),
         centerTitle: true,
       ),
       body:
@@ -93,15 +94,15 @@ class _HomeView extends StatelessWidget {
 
                     const SizedBox(height: 40),
 
-                    _macroRow('Carbs', vm.carbs, vm.carbsGoal),
-                    _macroRow('Protein', vm.protein, vm.proteinGoal),
-                    _macroRow('Fat', vm.fat, vm.fatGoal),
+                    _macroRow(loc.carbs, vm.carbs, vm.carbsGoal, loc),
+                    _macroRow(loc.protein, vm.protein, vm.proteinGoal, loc),
+                    _macroRow(loc.fats, vm.fat, vm.fatGoal, loc),
 
                     const Spacer(),
 
                     if (vm.consumedCalories >= vm.calorieGoal) ...[
-                      const Text(
-                        "You've reached your daily calorie goal!",
+                       Text(
+                        loc.reachedCalorieGoal,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.redAccent,
@@ -121,7 +122,7 @@ class _HomeView extends StatelessWidget {
                           );
                         },
                         icon: const Icon(Icons.qr_code_scanner),
-                        label: const Text("Scan product"),
+                        label: Text(loc.scanProduct),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
                           foregroundColor: Colors.white,
@@ -142,7 +143,7 @@ class _HomeView extends StatelessWidget {
     );
   }
 
- Widget _macroRow(String label, int value, int goal) {
+ Widget _macroRow(String label, int value, int goal, AppLocalizations loc) {
   final bool isOverLimit = value > goal;
 
   return Column(
@@ -166,7 +167,7 @@ class _HomeView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 4),
           child: Text(
-            '⚠️ You’ve exceeded your $label goal!',
+            loc.goalExceeded(label),
             style: const TextStyle(
               color: Colors.redAccent,
               fontSize: 14,
