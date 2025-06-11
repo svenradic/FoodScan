@@ -15,8 +15,8 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## 📦 Preuzimanje aplikacije
+## 📦 App Download
 
-Preuzmi build aplikacije klikom na link ispod:
+Download application build by clicking the link down bellow:
 
 [⬇️ app-release.zip](./release/app-release.zip)
